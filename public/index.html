@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Conferencing App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Meeting Header -->
+        <div class="meeting-header">
+            <div class="meeting-info">
+                <h2 id="meetingId">Meeting ID: <span id="roomId"></span></h2>
+                <button id="copyMeetingId" class="icon-button"><i class="fas fa-copy"></i></button>
+            </div>
+            <div class="meeting-controls">
+                <button id="leaveButton" class="control-button leave"><i class="fas fa-phone-slash"></i> Leave</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Video Grid -->
+            <div class="video-grid" id="videoGrid">
+                <!-- Video elements will be added here dynamically -->
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button id="muteButton" class="control-button"><i class="fas fa-microphone"></i></button>
+                <button id="cameraButton" class="control-button"><i class="fas fa-video"></i></button>
+                <button id="screenShareButton" class="control-button"><i class="fas fa-desktop"></i></button>
+                <button id="raiseHandButton" class="control-button"><i class="fas fa-hand-paper"></i></button>
+                <button id="chatButton" class="control-button"><i class="fas fa-comments"></i></button>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <!-- Chat Section -->
+            <div class="chat-section" id="chatSection">
+                <h3>Group Chat</h3>
+                <div class="chat-messages" id="messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Type your message..." autocomplete="off">
+                    <button id="sendButton">
+                        <i class="fas fa-paper-plane"></i> Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Meeting Modal -->
+    <div class="modal" id="joinModal">
+        <div class="modal-content">
+            <h2>Join Meeting</h2>
+            <input type="text" id="userName" placeholder="Your Name">
+            <input type="text" id="roomInput" placeholder="Meeting ID">
+            <button id="joinButton">Join</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
