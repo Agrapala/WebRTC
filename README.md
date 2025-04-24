@@ -1,6 +1,6 @@
 # WebRTC Video Conferencing Application
 
-A real-time video conferencing application built with WebRTC, Node.js, and Socket.io.
+A real-time video conferencing application built with WebRTC, Node.js, and Socket.IO.
 
 ## Features
 
@@ -8,21 +8,23 @@ A real-time video conferencing application built with WebRTC, Node.js, and Socke
 - Screen sharing
 - Chat functionality
 - Raise hand feature
-- Room-based video calls
-- Responsive design
+- Private messaging
+- Room-based meetings
+- Participant management
 
 ## Prerequisites
 
-- Node.js (v14 or higher)
-- npm or yarn
-- Modern web browser with WebRTC support
+- Node.js (v18 or higher)
+- Docker
+- Kubernetes cluster
+- Git
 
-## Installation
+## Local Development
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/webrtc-video-conferencing.git
-cd webrtc-video-conferencing
+git clone https://github.com/samithaagrapala/webrtc-app.git
+cd webrtc-app
 ```
 
 2. Install dependencies:
@@ -30,62 +32,84 @@ cd webrtc-video-conferencing
 npm install
 ```
 
-3. Start the server:
+3. Start the development server:
 ```bash
-node server.js
+npm start
 ```
 
-4. Open your browser and navigate to:
-```
-http://localhost:3000
-```
+The application will be available at `http://localhost:3000`
 
 ## Docker Deployment
 
 1. Build the Docker image:
 ```bash
-docker build -t webrtc-video-conferencing:latest .
+docker build -t webrtc-app:latest .
 ```
 
 2. Run the container:
 ```bash
-docker run -p 3000:3000 webrtc-video-conferencing:latest
+docker run -p 3000:3000 webrtc-app:latest
 ```
 
 ## Kubernetes Deployment
 
-1. Apply Kubernetes manifests:
+1. Apply the Kubernetes manifests:
 ```bash
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
-kubectl apply -f k8s/ingress.yaml
 ```
+
+2. Check the deployment status:
+```bash
+kubectl get pods
+kubectl get services
+```
+
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment. The workflow:
+
+1. Builds and tests the application
+2. Creates a Docker image
+3. Pushes the image to GitHub Container Registry
+4. Deploys to Kubernetes
+
+The workflow is triggered on:
+- Push to main branch
+- Pull requests to main branch
 
 ## Project Structure
 
 ```
-webrtc-video-conferencing/
-├── public/              # Static files
-│   ├── index.html      # Main HTML file
-│   ├── style.css       # Styles
-│   └── script.js       # Client-side JavaScript
-├── server.js           # Server code
-├── package.json        # Project dependencies
-├── Dockerfile          # Docker configuration
-└── k8s/                # Kubernetes manifests
-    ├── deployment.yaml
-    ├── service.yaml
-    └── ingress.yaml
+webrtc-app/
+├── public/           # Static files and frontend code
+├── k8s/             # Kubernetes manifests
+│   ├── deployment.yaml
+│   └── service.yaml
+├── .github/         # GitHub Actions workflow
+│   └── workflows/
+│       └── deploy.yml
+├── server.js        # Backend server
+├── package.json     # Project dependencies
+└── Dockerfile       # Docker configuration
 ```
+
+## Environment Variables
+
+- `PORT`: Server port (default: 3000)
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support, please open an issue in the GitHub repository.
